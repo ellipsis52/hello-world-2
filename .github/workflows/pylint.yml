@@ -1,0 +1,30 @@
+name: Pylint
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.8", "3.9", "3.10"]
+    steps:
+    - uses: actions/checkout@v3
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v3
+      with:
+        python-version: ${{ matrix.python-version }}
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install pylint
+    - name: Analysing the code with pylint
+      run: |
+        pylint $(git ls-files '*.py')
+web: python3 -m ptvsd --port 3000 --host 0.0.0.0 manage.py runserver 0.0.0.0:8080 --noreload
+source /Users/webtechnicom/PycharmProjects/venv/bin/activate
+(base) webtechnicom@MacBook-Pro-de-steve hello-world-2 % source /Users/webtechnicom/PycharmP
+rojects/venv/bin/activate
+(venv) (base) webtechnicom@MacBook-Pro-de-steve hello-world-2 % >....                       
+        echo "Expected content found -- site is up"
+        echo "END CONTENT TEST: Success! ✅"
